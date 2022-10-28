@@ -1,0 +1,17 @@
+{
+  "dev": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "Bernard"
+  },
+  "osb": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "Bernard"
+  },
+  "sosbox": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "Bernard"
+  }
+}

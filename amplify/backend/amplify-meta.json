@@ -1,0 +1,121 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sosbox-sosbox-202915-authRole",
+      "UnauthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-sosbox-202915-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-sosbox-202915-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-sosbox-sosbox-202915-deployment",
+      "UnauthRoleName": "amplify-sosbox-sosbox-202915-unauthRole",
+      "StackName": "amplify-sosbox-sosbox-202915",
+      "StackId": "arn:aws:cloudformation:ap-south-1:650519951172:stack/amplify-sosbox-sosbox-202915/ef2ac1f0-5607-11ed-9dbc-0a62cfc811ec",
+      "AmplifyAppId": "d2l3me051i1tq4",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-sosbox-sosbox-202915-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    }
+  },
+  "function": {
+    "sosboxakaosbPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2022-10-27T15:01:26.236Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-10-27T15:01:28.907Z",
+      "distZipFilename": "sosboxakaosbPostConfirmation-626e71423178356e6842-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-sosbox-sosbox-202915-deployment",
+        "s3Key": "amplify-builds/sosboxakaosbPostConfirmation-626e71423178356e6842-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-sosbox-sosbox-202915-deployment/amplify-cfn-templates/function/sosboxakaosbPostConfirmation-cloudformation-template.json",
+        "logicalId": "functionsosboxakaosbPostConfirmation"
+      },
+      "lastPushTimeStamp": "2022-10-27T15:08:48.697Z",
+      "output": {
+        "Region": "ap-south-1",
+        "Arn": "arn:aws:lambda:ap-south-1:650519951172:function:sosboxakaosbPostConfirmation-sosbox",
+        "Name": "sosboxakaosbPostConfirmation-sosbox",
+        "LambdaExecutionRole": "sosboxakaosbPostConfirmation-sosbox"
+      },
+      "lastPushDirHash": "SrWdhUIYcfM9Jm9heXJAs2D7tdU="
+    }
+  },
+  "auth": {
+    "sosboxakaosb": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "sosboxakaosbPostConfirmation",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-sosbox-sosbox-202915-deployment/amplify-cfn-templates/auth/sosboxakaosb-cloudformation-template.json",
+        "logicalId": "authsosboxakaosb"
+      },
+      "lastPushTimeStamp": "2022-10-27T15:08:48.697Z",
+      "output": {
+        "UserPoolId": "ap-south-1_gV8ddpEG0",
+        "AppClientIDWeb": "2pe6scp3oh2nu098olrmknvt57",
+        "AppClientID": "77siscv6aet1fcqvsi9p34f8s3",
+        "IdentityPoolId": "ap-south-1:960fa12c-7b6c-483f-9a3e-cd3ef21bce05",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-south-1:650519951172:userpool/ap-south-1_gV8ddpEG0",
+        "IdentityPoolName": "sosbox992904f3_identitypool_992904f3__sosbox",
+        "UserPoolName": "sosbox992904f3_userpool_992904f3"
+      },
+      "lastPushDirHash": "w7dk6sNhEXdovQK+IxQWUytrbkU="
+    }
+  },
+  "api": {
+    "sosbox": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "tocwv4szcrdlbc4buh6cwih5pu",
+        "GraphQLAPIEndpointOutput": "https://klozruvuavchjdsl2azp3twd74.appsync-api.ap-south-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-eksuypo4wzanraykpa3lcbtpwy"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-sosbox-sosbox-202915-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apisosbox"
+      },
+      "lastPushTimeStamp": "2022-10-27T15:08:48.697Z",
+      "lastPushDirHash": "+LZEB/JAzydVV6XTMyvwZCAuPuM="
+    }
+  }
+}
