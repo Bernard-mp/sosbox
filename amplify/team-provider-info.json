@@ -1,0 +1,72 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sosbox-dev-225101-authRole",
+      "UnauthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-dev-225101-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-dev-225101-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-sosbox-dev-225101-deployment",
+      "UnauthRoleName": "amplify-sosbox-dev-225101-unauthRole",
+      "StackName": "amplify-sosbox-dev-225101",
+      "StackId": "arn:aws:cloudformation:ap-south-1:650519951172:stack/amplify-sosbox-dev-225101/925533d0-5552-11ed-b290-0a5919dd7e1c",
+      "AmplifyAppId": "dgkd6uwc4r7lw"
+    },
+    "categories": {
+      "auth": {
+        "sosboxakaosb": {}
+      },
+      "function": {
+        "sosboxakaosbPostConfirmation": {}
+      }
+    }
+  },
+  "osb": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sosbox-osb-02416-authRole",
+      "UnauthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-osb-02416-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-osb-02416-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-sosbox-osb-02416-deployment",
+      "UnauthRoleName": "amplify-sosbox-osb-02416-unauthRole",
+      "StackName": "amplify-sosbox-osb-02416",
+      "StackId": "arn:aws:cloudformation:ap-south-1:650519951172:stack/amplify-sosbox-osb-02416/9a4b65c0-555f-11ed-b138-029e46d1421c",
+      "AmplifyAppId": "dai0x7x4l56d0"
+    },
+    "categories": {
+      "auth": {
+        "sosboxakaosb": {}
+      },
+      "function": {
+        "sosboxakaosbPostConfirmation": {}
+      }
+    }
+  },
+  "sosbox": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sosbox-sosbox-202915-authRole",
+      "UnauthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-sosbox-202915-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-sosbox-202915-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-sosbox-sosbox-202915-deployment",
+      "UnauthRoleName": "amplify-sosbox-sosbox-202915-unauthRole",
+      "StackName": "amplify-sosbox-sosbox-202915",
+      "StackId": "arn:aws:cloudformation:ap-south-1:650519951172:stack/amplify-sosbox-sosbox-202915/ef2ac1f0-5607-11ed-9dbc-0a62cfc811ec",
+      "AmplifyAppId": "d2l3me051i1tq4",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-sosbox-sosbox-202915-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "sosboxakaosb": {}
+      },
+      "function": {
+        "sosboxakaosbPostConfirmation": {
+          "deploymentBucketName": "amplify-sosbox-sosbox-202915-deployment",
+          "s3Key": "amplify-builds/sosboxakaosbPostConfirmation-626e71423178356e6842-build.zip"
+        }
+      },
+      "api": {
+        "sosbox": {}
+      }
+    }
+  }
+}
