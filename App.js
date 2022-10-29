@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
@@ -27,11 +27,12 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
 import Geolocation from '@react-native-community/geolocation';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import {withAuthenticator} from 'aws-amplify-react-native';
-import HomeScreen from './src/screens/HomeScreen';
-
+// import HomeScreen from './src/screens/HomeScreen';
+import Router from './src/navigation/Root';
 import {Amplify} from 'aws-amplify';
 import config from './src/aws-exports';
 
@@ -106,7 +107,8 @@ const App: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <>
+      {/* <SafeAreaView style={backgroundStyle}> */}
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -114,9 +116,11 @@ const App: () => Node = () => {
       {/* <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}> */}
-      <HomeScreen />
+      {/* <HomeScreen /> */}
       {/* </ScrollView> */}
-    </SafeAreaView>
+      <Router />
+      {/* </SafeAreaView> */}
+    </>
   );
 };
 

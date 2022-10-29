@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, Text, Image, FlatList, Dimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import serve from '../../assests/serve';
 
@@ -19,7 +19,7 @@ const HomeMap = props => {
   return (
     <View
       style={{
-        height: 450,
+        height: Dimensions.get('window').height - 330,
         backgroundColor: '#3670E9',
         // borderBottomEndRadius: 20,
         // borderBottomLeftRadius: 20,

@@ -44,7 +44,7 @@ const Section = ({children, title}): Node => {
     </View>
   );
 };
-const HomeScreen = props => {
+const H = props => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -58,7 +58,7 @@ const HomeScreen = props => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View>
-        <View style={{height: Dimensions.get('window').height - 330}}>
+        <View style={{height: Dimensions.get('window').height - 310}}>
           <HomeMap />
         </View>
 
@@ -69,4 +69,4 @@ const HomeScreen = props => {
     </SafeAreaView>
   );
 };
-export default HomeScreen;
+export default H;
