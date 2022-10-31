@@ -33,9 +33,10 @@ import Geolocation from '@react-native-community/geolocation';
 import {withAuthenticator} from 'aws-amplify-react-native';
 // import HomeScreen from './src/screens/HomeScreen';
 import Router from './src/navigation/Root';
-import {Amplify} from 'aws-amplify';
+// import {Amplify} from 'aws-amplify';
 import config from './src/aws-exports';
-
+import Amplify from '@aws-amplify/core';
+import Auth from '@aws-amplify/auth';
 Amplify.configure(config);
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */

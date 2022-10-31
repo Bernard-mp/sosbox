@@ -58,7 +58,7 @@ const HomeScreen = props => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View>
-        <View style={{height: Dimensions.get('window').height - 330}}>
+        <View>
           <HomeMap />
         </View>
 

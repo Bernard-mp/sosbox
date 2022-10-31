@@ -20,15 +20,15 @@ const RootNavigator = props => {
       <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}>
         <Drawer.Screen name="Home" component={HomeNavigator} />
 
-        <Drawer.Screen name="Your Trips">
-          {() => <DummyScreen name={'Your Trips'} />}
+        <Drawer.Screen name="Your bookings">
+          {() => <DummyScreen name={'Your Booking'} />}
         </Drawer.Screen>
 
         <Drawer.Screen name="Help">
           {() => <DummyScreen name={'Help'} />}
         </Drawer.Screen>
 
-        <Drawer.Screen name="Wallet">
+        <Drawer.Screen name="payment">
           {() => <DummyScreen name={'Wallet'} />}
         </Drawer.Screen>
 

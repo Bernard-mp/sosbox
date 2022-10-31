@@ -11,7 +11,7 @@ const OsbTypes = props => {
   };
 
   return (
-    <View style={{height: 280}}>
+    <View>
       <Text
         style={{
           marginTop: 15,

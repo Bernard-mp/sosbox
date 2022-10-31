@@ -19,7 +19,8 @@ const HomeMap = props => {
   return (
     <View
       style={{
-        height: Dimensions.get('window').height - 330,
+        height: Dimensions.get('window').height - 350,
+        // height: Dimensions.get('window').height - 330,
         backgroundColor: '#3670E9',
         // borderBottomEndRadius: 20,
         // borderBottomLeftRadius: 20,
