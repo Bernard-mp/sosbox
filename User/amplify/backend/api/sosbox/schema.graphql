@@ -1,0 +1,24 @@
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
+  email: String!
+  orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
+}
+type Serve @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  type: String!
+  latitude: Float
+  longitude: Float
+  heading: Float
+  phone: Int!
+  order: [Order] @hasMany(indexName: "byServe", fields: ["id"])
+}
+type Order @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  createdAt: String
+  type: String
+  userLatitude: Float
+  userLongitude: Float
+  userID: ID! @index(name: "byUser")
+  serveID: ID! @index(name: "byServe")
+}
