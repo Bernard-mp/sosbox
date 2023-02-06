@@ -5,9 +5,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeNavigator from './Home';
 import CustomDrawer from './CustomDrawer';
-import Edit from '../screens/EditProfile';
+// import Edit from '../screens/EditProfile';
 const Drawer = createDrawerNavigator();
-import OrderList from '../screens/OrderList';
+// import OrderList from '../screens/OrderList';
 const DummyScreen = props => (
   <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
     <Text>{props.name}</Text>
@@ -20,9 +20,9 @@ const RootNavigator = props => {
       <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}>
         <Drawer.Screen name="Home" component={HomeNavigator} />
 
-        <Drawer.Screen name="Your Bookings" component={OrderList} />
+        {/* <Drawer.Screen name="Your Bookings" component={OrderList} /> */}
 
-        <Drawer.Screen name="Account" component={Edit} />
+        {/* <Drawer.Screen name="Account" component={Edit} /> */}
       </Drawer.Navigator>
     </NavigationContainer>
   );

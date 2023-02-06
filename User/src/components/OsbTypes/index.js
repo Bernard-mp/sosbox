@@ -18,7 +18,7 @@ const OsbTypes = ({typeState, onSubmit}) => {
           fontWeight: 'bold',
           fontSize: 18,
         }}>
-        Please select the serive you needed
+        Please select the service you needed
         <AntDesign name="arrowright" size={15}>
           {' '}
         </AntDesign>

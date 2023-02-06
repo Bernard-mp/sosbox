@@ -2,23 +2,37 @@ type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   username: String!
   email: String!
+  phone: String
   orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
+  serve: Serve @hasOne
 }
+
 type Serve @model @auth(rules: [{allow: public}]) {
   id: ID!
   type: String!
   latitude: Float
   longitude: Float
   heading: Float
-  phone: Int!
+  phone: String
+  isActive: Boolean
   order: [Order] @hasMany(indexName: "byServe", fields: ["id"])
+  user: User @belongsTo
 }
+
 type Order @model @auth(rules: [{allow: public}]) {
   id: ID!
   createdAt: String
   type: String
   userLatitude: Float
   userLongitude: Float
+  status: String
   userID: ID! @index(name: "byUser")
   serveID: ID! @index(name: "byServe")
+  user: User @belongsTo(fields: ["userID"])
+  Serve: Serve @belongsTo(fields: ["userID"])
+}
+
+type Subscription {
+  onOrderUpdated(id: ID!): Order @aws_subscribe(mutations: ["updateOrder"])
+  onServeUpdated(id: ID!): Serve @aws_subscribe(mutations: ["updateServe"])
 }

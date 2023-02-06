@@ -10,6 +10,7 @@ export const createUser = /* GraphQL */ `
       id
       username
       email
+      phone
       orders {
         items {
           id
@@ -17,14 +18,40 @@ export const createUser = /* GraphQL */ `
           type
           userLatitude
           userLongitude
+          status
           userID
           serveID
           updatedAt
         }
         nextToken
       }
+      serve {
+        id
+        type
+        latitude
+        longitude
+        heading
+        phone
+        isActive
+        order {
+          nextToken
+        }
+        user {
+          id
+          username
+          email
+          phone
+          createdAt
+          updatedAt
+          userServeId
+        }
+        createdAt
+        updatedAt
+        serveUserId
+      }
       createdAt
       updatedAt
+      userServeId
     }
   }
 `;
@@ -37,6 +64,7 @@ export const updateUser = /* GraphQL */ `
       id
       username
       email
+      phone
       orders {
         items {
           id
@@ -44,14 +72,40 @@ export const updateUser = /* GraphQL */ `
           type
           userLatitude
           userLongitude
+          status
           userID
           serveID
           updatedAt
         }
         nextToken
       }
+      serve {
+        id
+        type
+        latitude
+        longitude
+        heading
+        phone
+        isActive
+        order {
+          nextToken
+        }
+        user {
+          id
+          username
+          email
+          phone
+          createdAt
+          updatedAt
+          userServeId
+        }
+        createdAt
+        updatedAt
+        serveUserId
+      }
       createdAt
       updatedAt
+      userServeId
     }
   }
 `;
@@ -64,6 +118,7 @@ export const deleteUser = /* GraphQL */ `
       id
       username
       email
+      phone
       orders {
         items {
           id
@@ -71,14 +126,40 @@ export const deleteUser = /* GraphQL */ `
           type
           userLatitude
           userLongitude
+          status
           userID
           serveID
           updatedAt
         }
         nextToken
       }
+      serve {
+        id
+        type
+        latitude
+        longitude
+        heading
+        phone
+        isActive
+        order {
+          nextToken
+        }
+        user {
+          id
+          username
+          email
+          phone
+          createdAt
+          updatedAt
+          userServeId
+        }
+        createdAt
+        updatedAt
+        serveUserId
+      }
       createdAt
       updatedAt
+      userServeId
     }
   }
 `;
@@ -94,6 +175,7 @@ export const createServe = /* GraphQL */ `
       longitude
       heading
       phone
+      isActive
       order {
         items {
           id
@@ -101,14 +183,40 @@ export const createServe = /* GraphQL */ `
           type
           userLatitude
           userLongitude
+          status
           userID
           serveID
           updatedAt
         }
         nextToken
       }
+      user {
+        id
+        username
+        email
+        phone
+        orders {
+          nextToken
+        }
+        serve {
+          id
+          type
+          latitude
+          longitude
+          heading
+          phone
+          isActive
+          createdAt
+          updatedAt
+          serveUserId
+        }
+        createdAt
+        updatedAt
+        userServeId
+      }
       createdAt
       updatedAt
+      serveUserId
     }
   }
 `;
@@ -124,6 +232,7 @@ export const updateServe = /* GraphQL */ `
       longitude
       heading
       phone
+      isActive
       order {
         items {
           id
@@ -131,14 +240,40 @@ export const updateServe = /* GraphQL */ `
           type
           userLatitude
           userLongitude
+          status
           userID
           serveID
           updatedAt
         }
         nextToken
       }
+      user {
+        id
+        username
+        email
+        phone
+        orders {
+          nextToken
+        }
+        serve {
+          id
+          type
+          latitude
+          longitude
+          heading
+          phone
+          isActive
+          createdAt
+          updatedAt
+          serveUserId
+        }
+        createdAt
+        updatedAt
+        userServeId
+      }
       createdAt
       updatedAt
+      serveUserId
     }
   }
 `;
@@ -154,6 +289,7 @@ export const deleteServe = /* GraphQL */ `
       longitude
       heading
       phone
+      isActive
       order {
         items {
           id
@@ -161,14 +297,40 @@ export const deleteServe = /* GraphQL */ `
           type
           userLatitude
           userLongitude
+          status
           userID
           serveID
           updatedAt
         }
         nextToken
       }
+      user {
+        id
+        username
+        email
+        phone
+        orders {
+          nextToken
+        }
+        serve {
+          id
+          type
+          latitude
+          longitude
+          heading
+          phone
+          isActive
+          createdAt
+          updatedAt
+          serveUserId
+        }
+        createdAt
+        updatedAt
+        userServeId
+      }
       createdAt
       updatedAt
+      serveUserId
     }
   }
 `;
@@ -183,8 +345,57 @@ export const createOrder = /* GraphQL */ `
       type
       userLatitude
       userLongitude
+      status
       userID
       serveID
+      user {
+        id
+        username
+        email
+        phone
+        orders {
+          nextToken
+        }
+        serve {
+          id
+          type
+          latitude
+          longitude
+          heading
+          phone
+          isActive
+          createdAt
+          updatedAt
+          serveUserId
+        }
+        createdAt
+        updatedAt
+        userServeId
+      }
+      Serve {
+        id
+        type
+        latitude
+        longitude
+        heading
+        phone
+        isActive
+        order {
+          nextToken
+        }
+        user {
+          id
+          username
+          email
+          phone
+          createdAt
+          updatedAt
+          userServeId
+        }
+        createdAt
+        updatedAt
+        serveUserId
+      }
       updatedAt
     }
   }
@@ -200,8 +411,57 @@ export const updateOrder = /* GraphQL */ `
       type
       userLatitude
       userLongitude
+      status
       userID
       serveID
+      user {
+        id
+        username
+        email
+        phone
+        orders {
+          nextToken
+        }
+        serve {
+          id
+          type
+          latitude
+          longitude
+          heading
+          phone
+          isActive
+          createdAt
+          updatedAt
+          serveUserId
+        }
+        createdAt
+        updatedAt
+        userServeId
+      }
+      Serve {
+        id
+        type
+        latitude
+        longitude
+        heading
+        phone
+        isActive
+        order {
+          nextToken
+        }
+        user {
+          id
+          username
+          email
+          phone
+          createdAt
+          updatedAt
+          userServeId
+        }
+        createdAt
+        updatedAt
+        serveUserId
+      }
       updatedAt
     }
   }
@@ -217,8 +477,57 @@ export const deleteOrder = /* GraphQL */ `
       type
       userLatitude
       userLongitude
+      status
       userID
       serveID
+      user {
+        id
+        username
+        email
+        phone
+        orders {
+          nextToken
+        }
+        serve {
+          id
+          type
+          latitude
+          longitude
+          heading
+          phone
+          isActive
+          createdAt
+          updatedAt
+          serveUserId
+        }
+        createdAt
+        updatedAt
+        userServeId
+      }
+      Serve {
+        id
+        type
+        latitude
+        longitude
+        heading
+        phone
+        isActive
+        order {
+          nextToken
+        }
+        user {
+          id
+          username
+          email
+          phone
+          createdAt
+          updatedAt
+          userServeId
+        }
+        createdAt
+        updatedAt
+        serveUserId
+      }
       updatedAt
     }
   }

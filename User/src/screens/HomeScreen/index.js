@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {
+  Alert,
+  Button,
   Dimensions,
   SafeAreaView,
   ScrollView,
@@ -9,6 +11,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import {useRoute, useNavigation} from '@react-navigation/native';
 import {API, graphqlOperation, Auth} from 'aws-amplify';
 import {createOrder} from '../../graphql/mutations';
 import HomeMap from '../../components/HomeMap';
@@ -46,13 +50,27 @@ const Section = ({children, title}): Node => {
     </View>
   );
 };
+const onUserLocationChange = async event => {
+  loc = event.nativeEvent.coordinate;
+  // const {latitude, longitude} = event.nativeEvent.coordinate;
+  console.log(loc);
+};
 const HomeScreen = props => {
   const typeState = useState(null);
+  const route = useRoute();
+  const navigation = useNavigation();
+  <MapView
+    provider={PROVIDER_GOOGLE}
+    showsUserLocation={true}
+    onUserLocationChange={onUserLocationChange}
+  />;
   const onSubmit = async () => {
     const [type] = typeState;
+
     if (!type) {
       return;
     }
+
     try {
       const userInfo = await Auth.currentAuthenticatedUser();
       const date = new Date();
@@ -65,25 +83,17 @@ const HomeScreen = props => {
           input: {
             createdAt: date.toISOString(),
             type,
-            userLatitude: 123.45,
-            userLongitude: 123.45,
+            userLatitude: loc.latitude,
+            userLongitude: loc.longitude,
             // heading: 130.0,
             userID: userInfo.attributes.sub,
-            serveID: 'a3f4095e-39de-43d2-baf4-f8c16f0f6f4d',
+            serveID: '1',
+            status: 'NEW',
           },
         },
       });
-      // const input = {
-      //   // createdAt: date.toISOString(),
-      //   type,
-      //   Latitude: 123.45,
-      //   Longitude: 123.45,
-
-      // };
-      // const response = await API.graphql(
-      //   graphqlOperation(CreateServe, {input: input}),
-      // );
       console.log(newOrder);
+      navigation.navigate('OrderPage', {id: newOrder.data.createOrder.id});
     } catch (e) {
       console.log(e);
     }

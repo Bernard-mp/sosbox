@@ -16,6 +16,7 @@ const HomeMap = props => {
       } catch (e) {
         console.log('error in feteching');
       }
+      cd;
     };
     fetchServes();
   }, []);
@@ -32,6 +33,11 @@ const HomeMap = props => {
     }
     if (type === 'tyre') return require('../../assests/tyre.png');
   };
+
+  const onUserLocationChange = async event => {
+    loc = event.nativeEvent.coordinate;
+    // const {latitude, longitude} = event.nativeEvent.coordinate;
+  };
   return (
     <View
       style={{
@@ -45,23 +51,27 @@ const HomeMap = props => {
         style={{height: '100%', width: '100%'}}
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
+        onUserLocationChange={onUserLocationChange}
         initialRegion={{
           latitude: 12.93625488062098,
           longitude: 77.53534496697024,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
-        {serves.map(serve => (
-          <Marker
-            coordinate={{
-              latitude: serve.latitude,
-              longitude: serve.longitude,
-            }}>
-            <Image
-              style={{width: 50, height: 30}}
-              source={getImage(serve.type)}></Image>
-          </Marker>
-        ))}
+        {serves.map(
+          serve =>
+            serve.isActive && (
+              <Marker
+                coordinate={{
+                  latitude: serve.latitude,
+                  longitude: serve.longitude,
+                }}>
+                <Image
+                  style={{width: 50, height: 30}}
+                  source={getImage(serve.type)}></Image>
+              </Marker>
+            ),
+        )}
       </MapView>
     </View>
   );

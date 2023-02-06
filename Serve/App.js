@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
@@ -19,9 +19,23 @@ import {
   PermissionsAndroid,
   Platform,
 } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
+import {
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+import {withAuthenticator} from 'aws-amplify-react-native';
+import HomeScreen from './src/screens/HomeScreen/index';
 import Geolocation from '@react-native-community/geolocation';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Amplify from '@aws-amplify/core';
+import {API, graphqlOperation, Auth} from 'aws-amplify';
+import config from './src/aws-exports';
+Amplify.configure(config);
+import {getServeId} from './src/graphql/queries';
+import {createServe} from './src/graphql/mutations';
+
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 navigator.geolocation = require('@react-native-community/geolocation');
@@ -88,7 +102,34 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  //Create a service registered automatically in serve data base
+  useEffect(() => {
+    const updateUserServe = async () => {
+      const authenticatedUser = await Auth.currentAuthenticatedUser({
+        bypassCache: true,
+      });
+      if (!authenticatedUser) return;
 
+      const serveData = await API.graphql(
+        graphqlOperation(getServeId, {id: authenticatedUser.attributes.sub}),
+      );
+      if (!!serveData.data.getServe) {
+        console.log(serveData.data.getServe);
+        console.log('already service is defined');
+        return;
+      }
+      const newServe = {
+        id: authenticatedUser.attributes.sub,
+        type: 'fuel',
+        serveUserId: authenticatedUser.attributes.sub,
+        phone: authenticatedUser.attributes.phone_number,
+        isActive: false,
+      };
+      await API.graphql(graphqlOperation(createServe, {input: newServe}));
+    };
+
+    updateUserServe();
+  }, []);
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -101,23 +142,5 @@ const App: () => Node = () => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-// });
-
-export default App;
+// export default App;
+export default withAuthenticator(App);

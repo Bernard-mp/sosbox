@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   bottomContainer: {
-    height: (Dimensions.get('window').height * 9) / 100,
+    height: 80,
     backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   bottomText: {
-    // height: 50,
+    height: 40,
     fontSize: 20,
     color: '#4a4a4a',
   },
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
-    bottom: 100,
+    bottom: 110,
     left: Dimensions.get('window').width / 2 - 37,
   },
   goText: {
@@ -36,7 +36,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-
+  cancelText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+  },
   balanceButton: {
     position: 'absolute',
     backgroundColor: '#1c1c1c',

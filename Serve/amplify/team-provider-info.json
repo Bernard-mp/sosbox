@@ -1,0 +1,16 @@
+{
+  "sosbox": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sosbox-sosbox-202915-authRole",
+      "UnauthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-sosbox-202915-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::650519951172:role/amplify-sosbox-sosbox-202915-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-sosbox-sosbox-202915-deployment",
+      "UnauthRoleName": "amplify-sosbox-sosbox-202915-unauthRole",
+      "StackName": "amplify-sosbox-sosbox-202915",
+      "StackId": "arn:aws:cloudformation:ap-south-1:650519951172:stack/amplify-sosbox-sosbox-202915/ef2ac1f0-5607-11ed-9dbc-0a62cfc811ec",
+      "AmplifyAppId": "d2l3me051i1tq4",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-sosbox-sosbox-202915-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    }
+  }
+}

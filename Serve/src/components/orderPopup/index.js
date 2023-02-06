@@ -1,10 +1,32 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Pressable} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './styles.js';
+import {getServe, listOrders} from '../../graphql/queries';
+import {API, graphqlOperation, Auth} from 'aws-amplify';
+const OrderPopup = ({newOrder, onAccept, onDecline, Dis}) => {
+  // console.log(newOrder);
+  // const [serve, setServe] = useState();
+  // const [Dis, setDis] = useState();
+  // const fetchServe = async () => {
+  //   try {
+  //     const userData = await Auth.currentAuthenticatedUser();
+  //     const serveData = await API.graphql(
+  //       graphqlOperation(getServe, {id: userData.attributes.sub}),
+  //     );
+  //     // console.log(serveData.data.getServe);
+  //     setServe(serveData.data.getServe);
+  //     // console.log(serve.latitude);
+  //     // console.log(newOrder.userLatitude);
+  //   } catch (e) {
+  //     console.error('eroor');
+  //   }
+  // };
+  useEffect(() => {
+    console.log(Dis);
+  });
 
-const OrderPopup = ({newOrder, onAccept, onDecline}) => {
   return (
     <View style={styles.root}>
       <Pressable onPress={onDecline} style={styles.declineButton}>
@@ -25,8 +47,10 @@ const OrderPopup = ({newOrder, onAccept, onDecline}) => {
           </Text>
         </View>
 
-        <Text style={styles.minutes}> {newOrder.dur} min</Text>
-        <Text style={styles.distance}>{newOrder.dist} KM</Text>
+        {/* <Text style={styles.minutes}> {newOrder.duration} min</Text> */}
+        <Text style={styles.distance}>
+          Approx Dis:{Number(Dis.toFixed(3))} KM
+        </Text>
       </Pressable>
     </View>
   );

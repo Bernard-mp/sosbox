@@ -61,7 +61,7 @@
       "function": {
         "sosboxakaosbPostConfirmation": {
           "deploymentBucketName": "amplify-sosbox-sosbox-202915-deployment",
-          "s3Key": "amplify-builds/sosboxakaosbPostConfirmation-6a75782b544557786e67-build.zip"
+          "s3Key": "amplify-builds/sosboxakaosbPostConfirmation-37364a5776766d622b68-build.zip"
         }
       },
       "api": {
